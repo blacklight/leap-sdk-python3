@@ -1,0 +1,10 @@
+./__pycache__
+./include
+./leap
+./Leap.i.diff
+./LeapPython.cpp
+./LeapPython.h
+./LeapPython.so
+./Leap.py
+./LeapSDK.tar.gz
+
