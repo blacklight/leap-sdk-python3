@@ -2,7 +2,7 @@ PREFIX := $(if $(PREFIX),$(PREFIX),/usr)
 PYTHON3_VERSION := $(shell python3 --version | cut -d' ' -f 2 | cut -d. -f 1,2)
 ARCH := $(shell uname -m | sed -e 's/x86_64/x64/')
 
-SDK_PATH=../../leap/LeapSDK
+SDK_PATH=./leap/LeapSDK
 
 all:
 	[ -f ./LeapSDK.tar.gz ] || wget -O LeapSDK.tar.gz http://warehouse.leapmotion.com/apps/4185/download/
