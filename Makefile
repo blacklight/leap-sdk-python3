@@ -5,7 +5,7 @@ ARCH := $(shell uname -m | sed -e 's/x86_64/x64/')
 SDK_PATH=../../leap/LeapSDK
 
 all:
-	[ -f ./LeapSDK.tar.gz ] || wget -O LeapSDK.tar.gz $(SOURCE)
+	[ -f ./LeapSDK.tar.gz ] || wget -O LeapSDK.tar.gz http://warehouse.leapmotion.com/apps/4185/download/
 	mkdir -p leap
 	tar xvf LeapSDK.tar.gz -C leap --strip-components 1
 	cp -r $(SDK_PATH)/include ./include
