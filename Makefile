@@ -11,7 +11,7 @@ all:
 	cp -r $(SDK_PATH)/include ./include
 	wget http://tinyurl.com/leap-i-patch -O Leap.i.diff
 	patch -p0 < Leap.i.diff
-	swig-3 -c++ -python -o LeapPython.cpp -interface LeapPython ./include/Leap.i
+	swig3.0 -c++ -python -o LeapPython.cpp -interface LeapPython ./include/Leap.i
 	g++ -fPIC -I/usr/include/python$(PYTHON3_VERSION)m -I/usr/include/python$(PYTHON3_VERSION) -I$(SDK_PATH)/include LeapPython.cpp $(SDK_PATH)/lib/$(ARCH)/libLeap.so -shared -o LeapPython.so
 
 clean:
