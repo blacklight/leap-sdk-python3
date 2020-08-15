@@ -1,18 +1,10 @@
 PREFIX := $(if $(PREFIX),$(PREFIX),/usr)
 PYTHON3_VERSION := $(shell python3 --version | cut -d' ' -f 2 | cut -d. -f 1,2)
 ARCH := $(shell uname -m | sed -e 's/x86_64/x64/')
-
 SDK_PATH=./leap/LeapSDK
 
 all:
-	[ -f ./LeapSDK.tar.gz ] || wget -O LeapSDK.tar.gz http://warehouse.leapmotion.com/apps/4185/download/
-	mkdir -p leap
-	tar xvf LeapSDK.tar.gz -C leap --strip-components 1
-	cp -r $(SDK_PATH)/include ./include
-	wget http://tinyurl.com/leap-i-patch -O Leap.i.diff
-	patch -p0 < Leap.i.diff
-	swig-3 -c++ -python -o LeapPython.cpp -interface LeapPython ./include/Leap.i
-	g++ -fPIC -I/usr/include/python$(PYTHON3_VERSION)m -I/usr/include/python$(PYTHON3_VERSION) -I$(SDK_PATH)/include LeapPython.cpp $(SDK_PATH)/lib/$(ARCH)/libLeap.so -shared -o LeapPython.so
+	@./build.sh
 
 clean:
 	rm -rf __pycache__
